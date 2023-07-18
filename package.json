@@ -1,0 +1,26 @@
+{
+	"name": "babaseprite",
+	"displayName": "Babaseprite",
+	"description": "Importing, exporting, and easy creation of tiles for Baba Is You.",
+	"version": "0.x",
+	"author": { "name":  "balt",
+				"email": "heptor42@gmail.com",
+				"url":   "https://balt.sno.mba/" },
+	"contributors": [ "Plasmaflare" ],
+	"publisher": "balt",
+	"license": "MIT",
+	"categories": [ "Scripts" ],
+	"contributes": {
+		"scripts": [
+			{ 
+				"path": "./main.lua" 
+			}
+		],
+		"palettes": [
+			{
+				"id": "Baba",
+				"path": "./baba.gpl"
+			}
+		]
+	}
+}
