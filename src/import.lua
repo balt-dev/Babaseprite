@@ -152,8 +152,9 @@ function importtile()
             for i, tile in ipairs(tilestoload) do
                 for frame = 1, 3 do
                     local failed = false
+                    local path
                     if not usetemplate then
-                        local path = dir_path .. obj_name .. "_" .. tile .. "_" .. frame .. ".png"
+                        path = dir_path .. obj_name .. "_" .. tile .. "_" .. frame .. ".png"
                         if not app.fs.isFile(path) then
                             -- print(tostring(tile) .. " not found, trying fallback " .. tostring(fallbacks[tile]) .. "...")
                             if fallbacks[tile] then
@@ -210,6 +211,7 @@ function importtile()
                 end
                 newsprite.gridBounds = Rectangle(0, 0, width, height)
                 app.command.ShowGrid()
+                app.command.LoadPalette{ filename=app.fs.joinPath(path, "baba.gpl") }
             --end)
         end,
         hexpand = false,
