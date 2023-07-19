@@ -36,20 +36,16 @@ function exporttile()
     local tilename = app.fs.fileTitle(app.sprite.filename)
     dialog:file {
         id = "file",
+        label = "Path + Name",
         entry = true,
         save = true,
         filename = filepath,
         title = "Select a directory to export to",
+        filetypes = { "" },
         onchange = function()
             filepath = app.fs.filePath(dialog.data["file"])
+            tilename = app.fs.fileTitle(dialog.data["file"])
             dialog:modify { id = "save", enabled = filepath ~= nil }
-        end
-    }
-    dialog:entry {
-        id = "tilename",
-        text = string.gsub(tilename, "(.*)%..*", "%1"),
-        onchange = function()
-            tilename = dialog.data["tilename"]
         end
     }
     dialog:separator()
@@ -105,7 +101,7 @@ function exporttile()
 
                         local slice_name = slice.name
                         slice_sprite:saveAs(
-                            filepath .. app.fs.pathSeparator .. tilename .. "_" .. slice_name .. "_" .. frame .. ".png"
+                            app.fs.joinPath(filepath, tilename .. "_" .. slice_name .. "_" .. frame .. ".png")
                         )
                         slice_sprite:close()
                         dialog:modify {
@@ -120,7 +116,7 @@ function exporttile()
             dialog.bounds = Rectangle(
                 dialog.bounds.x,
                 dialog.bounds.y,
-                math.max(dialog.bounds.width, 200),
+                math.max(dialog.bounds.width, 500),
                 dialog.bounds.height
             )
             dialog:modify {
@@ -153,7 +149,12 @@ function exporttile()
             dialog:close()
         end
     }
-
+    dialog.bounds = Rectangle(
+        dialog.bounds.x,
+        dialog.bounds.y,
+        math.max(dialog.bounds.width, 300),
+        dialog.bounds.height
+    )
     dialog:show{wait = false}
 end
 

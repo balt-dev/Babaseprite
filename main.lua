@@ -5,7 +5,7 @@ baba_png_pattern = "^(.*[^a-zA-Z0-9_])(([a-zA-Z0-9_]+)_(%d+)_(%d+)%.png)$"
 local import = require("import")
 local export = require("export")
 
-function init(plugin)    
+function init(plugin)   
     plugin:newCommand{
         id = "ImportTile",
         title = "Import Baba Tile",
