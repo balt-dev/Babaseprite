@@ -1,5 +1,6 @@
 # Babaseprite
  An Aseprite plugin made to make creating tiles for the game Baba Is You much easier.
+ Based off of https://github.com/PlasmaFlare/baba-aseprite-export/tree/master.
 ## Video
 https://github.com/balt-dev/Babaseprite/assets/59123926/e64900bf-1303-453c-ba02-c3f5fa87c79c
 ## Gallery
